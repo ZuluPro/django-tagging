@@ -2,37 +2,13 @@ name: Run tests
 
 on:
   push:
-    branches: [ master, devel ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master, devel ]
+    branches: [ master, develop ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    services:
-      redis:
-        image: redis
-        ports:
-          - 6379/tcp
-        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=5
-      mariadb:
-        image: mariadb:latest
-        ports:
-          - 3306/tcp
-        env:
-          MARIADB_USER: graphite
-          MARIADB_PASSWORD: graphite
-          MARIADB_DATABASE: test_graphite
-          MARIADB_ROOT_PASSWORD: root
-        options: --health-cmd="/usr/local/bin/healthcheck.sh --su-mysql --connect --innodb_initialized" --health-interval=5s --health-timeout=2s --health-retries=3
-      postgres:
-        image: postgres
-        ports:
-          - 5432/tcp
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=5
 
     strategy:
       matrix:
