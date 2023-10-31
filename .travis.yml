@@ -7,15 +7,15 @@ services:
     - postgresql
     - mysql
 env:
-    - DJANGO=1.11 DATABASE_ENGINE=sqlite
-    - DJANGO=1.11 DATABASE_ENGINE=postgres
-    - DJANGO=1.11 DATABASE_ENGINE=mysql
     - DJANGO=2.2 DATABASE_ENGINE=sqlite
     - DJANGO=2.2 DATABASE_ENGINE=postgres
     - DJANGO=2.2 DATABASE_ENGINE=mysql
     - DJANGO=3.0 DATABASE_ENGINE=sqlite
     - DJANGO=3.0 DATABASE_ENGINE=postgres
     - DJANGO=3.0 DATABASE_ENGINE=mysql
+    - DJANGO=4.2 DATABASE_ENGINE=sqlite
+    - DJANGO=4.2 DATABASE_ENGINE=postgres
+    - DJANGO=4.2 DATABASE_ENGINE=mysql
 
 install:
     - pip install -U setuptools zc.buildout
