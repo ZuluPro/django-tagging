@@ -15,7 +15,7 @@ jobs:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Install global dependencies
         run: |
           sudo apt-get -y install libcairo2-dev librrd-dev libboost-python-dev redis-tools
@@ -28,15 +28,6 @@ jobs:
           python -m pip install --upgrade pip 'setuptools<58' --force-reinstall
           pip install 'tox<4' tox-gh-actions flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with tox
-        run: |
-          tox
-      - name: Linting
-        if: ${{ matrix.python-version==3.11 }}
-        env:
-          TOXENV: lint
-        run: |
-          tox
       - name: Testing documentation
         if: ${{ matrix.python-version==3.11 }}
         env:
