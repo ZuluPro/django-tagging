@@ -1,2 +1,16 @@
-docs/_build
+# ignore VScode config
 .vscode
+
+# ignore virtual environment
+venv
+
+# ignore precompiled code
+__pycache__
+
+# ignore build artifacts
+docs/_build
+build
+develop-eggs
+django_tagging.egg-info
+eggs
+
