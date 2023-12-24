@@ -5,7 +5,10 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import connection
 from django.db import models
-from django.utils.encoding import smart_text
+try:
+    from django.utils.encoding import smart_text
+except ImportError:
+    from django.utils.encoding import smart_str as smart_text
 from django.utils.translation import gettext_lazy as _
 
 from tagging import settings
